@@ -37,6 +37,8 @@ namespace Service.Services
 
         public async Task<CategoryEntity> Put(CategoryEntity category)
         {
+            category.Title = category.Title.ToUpper();
+
             return await _repository.UpdateAsync(category);
         }
     }

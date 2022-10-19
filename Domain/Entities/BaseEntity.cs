@@ -6,15 +6,9 @@ namespace Domain.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        
-        private DateTime _createdAt;
-        
-        public DateTime CreatedAt
-        {
-            get { return _createdAt; }
-            set { _createdAt = DateTime.UtcNow; }
-        }
-        
+
+        public DateTime CreatedAt { get; set; }
+
         public DateTime? UpdatedAt { get; set; }
 
         public bool? Enabled { get; set; }
