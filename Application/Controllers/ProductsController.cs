@@ -1,4 +1,4 @@
-using Domain.Entities;
+﻿using Domain.Entities;
 using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -7,12 +7,12 @@ namespace Application.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CategoriesController : ControllerBase
+    public class ProductsController : ControllerBase
     {
-        private readonly ICategoryService _service;
+        private readonly IProductService _service;
         //public IMapper _mapper { get; set; }
 
-        public CategoriesController(ICategoryService service)
+        public ProductsController(IProductService service)
         {
             _service = service;
             //_mapper = mapper;
@@ -37,7 +37,7 @@ namespace Application.Controllers
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetCategoryWithId")]
+        [Route("{id}", Name = "GetProductWithId")]
         public async Task<ActionResult> Get(Guid id)
         {
             if (!ModelState.IsValid)
@@ -56,7 +56,7 @@ namespace Application.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CategoryEntity category)
+        public async Task<ActionResult> Post([FromBody] ProductEntity product)
         {
             if (!ModelState.IsValid)
             {
@@ -65,11 +65,11 @@ namespace Application.Controllers
 
             try
             {
-                var result = await _service.Post(category);
-
+                var result = await _service.Post(product);
+                
                 if (result != null)
                 {
-                    return Created(new Uri(Url.Link("GetCategoryWithId", new { id = result.Id })), result);
+                    return Created(new Uri(Url.Link("GetProductWithId", new { id = result.Id })), result);
                 }
                 else
                 {
@@ -83,7 +83,7 @@ namespace Application.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] CategoryEntity category)
+        public async Task<ActionResult> Put([FromBody] ProductEntity product)
         {
             if (!ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace Application.Controllers
 
             try
             {
-                var result = await _service.Put(category);
+                var result = await _service.Put(product);
 
                 if (result != null)
                 {
