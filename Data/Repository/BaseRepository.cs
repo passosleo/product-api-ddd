@@ -67,7 +67,7 @@ namespace Data.Repository
             return await _dataset.AnyAsync(p => p.Id.Equals(id));
         }
 
-        public async Task<T> SelectAsync(Guid id)
+        public async Task<T> SelectByIdAsync(Guid id)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace Data.Repository
             return item;
         }
 
-        public async Task<IEnumerable<T>> SelectAsync()
+        public async Task<IEnumerable<T>> SelectAllAsync()
         {
             try
             {

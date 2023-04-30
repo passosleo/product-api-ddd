@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Data.Mapping
+namespace Data.Migrations
 {
     public class ProductMap : IEntityTypeConfiguration<ProductEntity>
     {
@@ -23,13 +23,11 @@ namespace Data.Mapping
                 .IsRequired()
                 .HasMaxLength(250);
 
-            builder.Property(x => x.Category)
-                .IsRequired()
-                .HasMaxLength(36)
-                .IsFixedLength();
+            builder.HasOne(c => c.Category)
+                .WithMany();
 
             builder.Property(x => x.Enabled)
-                .HasDefaultValueSql("1");
+                    .HasDefaultValueSql("1");
         }
     }
 }

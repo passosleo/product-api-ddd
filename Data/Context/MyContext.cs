@@ -1,4 +1,5 @@
 ﻿using Data.Mapping;
+using Data.Migrations;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,7 @@ namespace Data.Context
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<CategoryEntity>(new CategoryMap().Configure);
+            modelBuilder.Entity<ProductEntity>(new ProductMap().Configure);
         }
     }
 }

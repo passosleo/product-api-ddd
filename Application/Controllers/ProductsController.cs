@@ -47,7 +47,7 @@ namespace Application.Controllers
 
             try
             {
-                return Ok(await _service.Get(id));
+                return Ok(await _service.GetById(id));
             }
             catch (ArgumentException e)
             {

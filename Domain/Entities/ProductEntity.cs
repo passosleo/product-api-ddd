@@ -1,4 +1,4 @@
-﻿using System.Reflection.Metadata;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -8,7 +8,7 @@ namespace Domain.Entities
 
         public string Description { get; set; }
 
-        public Guid Category { get; set; }
+        public virtual CategoryEntity Category { get; set; }
 
         public string? Image { get; set; }
 

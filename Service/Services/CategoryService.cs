@@ -18,14 +18,14 @@ namespace Service.Services
             return await _repository.DeleteAsync(id);
         }
 
-        public async Task<CategoryEntity> Get(Guid id)
+        public async Task<CategoryEntity> GetById(Guid id)
         {
-            return await _repository.SelectAsync(id);
+            return await _repository.SelectByIdAsync(id);
         }
 
         public async Task<IEnumerable<CategoryEntity>> GetAll()
         {
-            return await _repository.SelectAsync();
+            return await _repository.SelectAllAsync();
         }
 
         public async Task<CategoryEntity> Post(CategoryEntity category)
